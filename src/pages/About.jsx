@@ -67,7 +67,7 @@ export default function About() {
             Building a Better Path<br />to <span className="gradient-text">Homeownership</span>
           </h1>
           <p className="section-subtitle mx-auto">
-            Since 2012, HomeLoan has been India's most trusted digital lending partner — 
+            Since 2012, StatIndia FinServices has been India's most trusted digital lending partner —
             simplifying the complex, one home at a time.
           </p>
         </div>
@@ -86,19 +86,19 @@ export default function About() {
               <h2 className="section-title mb-6">A Decade of Trusted Lending</h2>
               <div className="space-y-4 text-gray-500 leading-relaxed">
                 <p>
-                  HomeLoan was founded in 2012 with a single purpose: to make homeownership accessible 
-                  to every Indian family, regardless of their financial background. We saw how traditional 
+                  StarIndia FinServices was founded in 2012 with a single purpose: to make homeownership accessible
+                  to every Indian family, regardless of their financial background. We saw how traditional
                   banks made the loan process unnecessarily complex, opaque, and slow.
                 </p>
                 <p>
-                  Our founders — a team of fintech veterans and real estate professionals — set out to 
-                  build a platform that puts the customer first. With transparent pricing, instant 
-                  eligibility checks, and a team of dedicated advisors, we changed what it meant to 
+                  Our founders — a team of fintech veterans and real estate professionals — set out to
+                  build a platform that puts the customer first. With transparent pricing, instant
+                  eligibility checks, and a team of dedicated advisors, we changed what it meant to
                   apply for a home loan.
                 </p>
                 <p>
-                  Today, we've helped over 50,000 families across 200+ cities realise their dream of 
-                  owning a home. We continue to innovate with technology while keeping our core 
+                  Today, we've helped over 50,000 families across 200+ cities realise their dream of
+                  owning a home. We continue to innovate with technology while keeping our core
                   promise: honest, fast, and human-centric lending.
                 </p>
               </div>
@@ -148,8 +148,8 @@ export default function About() {
               </div>
               <h3 className="font-display text-xl font-bold text-gray-900 mb-3">Our Mission</h3>
               <p className="text-gray-500 leading-relaxed">
-                To democratise access to home finance by delivering transparent, technology-driven 
-                lending solutions that empower every Indian to own a home — with confidence, 
+                To democratise access to home finance by delivering transparent, technology-driven
+                lending solutions that empower every Indian to own a home — with confidence,
                 clarity, and comfort.
               </p>
             </div>
@@ -168,8 +168,8 @@ export default function About() {
               </div>
               <h3 className="font-display text-xl font-bold text-white mb-3">Our Vision</h3>
               <p className="text-blue-100 leading-relaxed">
-                To become India's #1 home financing platform by 2030 — a world where every 
-                family, regardless of geography or income, can achieve the dream of owning a 
+                To become India's #1 home financing platform by 2030 — a world where every
+                family, regardless of geography or income, can achieve the dream of owning a
                 home through a seamless, dignified experience.
               </p>
             </div>
@@ -241,7 +241,7 @@ export default function About() {
             Start Your Journey With Us Today
           </h2>
           <p className="text-gray-500 mb-8">
-            Join 50,000+ families who trusted HomeLoan to find the right mortgage for them.
+            Join 50,000+ families who trusted StarIndian FinServices to find the right mortgage for them.
           </p>
           <Link to="/contact" className="btn-primary">
             Apply for a Loan

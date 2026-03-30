@@ -1,24 +1,25 @@
 // Footer.jsx — Professional site footer with links and branding
 import React from 'react'
 import { Link } from 'react-router-dom'
+import logo from '../assets/logo.jpeg';
 
 const FOOTER_LINKS = {
   Company: [
-    { label: 'Home',     to: '/' },
-    { label: 'About',    to: '/about' },
+    { label: 'Home', to: '/' },
+    { label: 'About', to: '/about' },
     { label: 'Services', to: '/services' },
-    { label: 'Contact',  to: '/contact' },
+    { label: 'Contact', to: '/contact' },
   ],
   'Loan Types': [
-    { label: 'Home Loan',      to: '/services' },
-    { label: 'Personal Loan',  to: '/services' },
-    { label: 'Business Loan',  to: '/services' },
+    { label: 'Home Loan', to: '/services' },
+    { label: 'Personal Loan', to: '/services' },
+    { label: 'Business Loan', to: '/services' },
     { label: 'Education Loan', to: '/services' },
   ],
   Support: [
-    { label: 'FAQs',           to: '/contact' },
-    { label: 'Apply Now',      to: '/contact' },
-    { label: 'Get a Quote',    to: '/contact' },
+    { label: 'FAQs', to: '/contact' },
+    { label: 'Apply Now', to: '/contact' },
+    { label: 'Get a Quote', to: '/contact' },
     { label: 'Privacy Policy', to: '/' },
   ],
 }
@@ -34,18 +35,17 @@ export default function Footer() {
 
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h3a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h3a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                </svg>
-              </div>
-              <span className="font-display text-xl font-bold text-white">
-                Home<span className="text-blue-500">Loan</span>
-              </span>
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src={logo}
+                alt="StarIndian FinServices Logo"
+                className="w-28 sm:w-32 h-auto object-contain"
+                loading="lazy"
+              />
             </div>
-            <p className="text-sm text-gray-500 leading-relaxed mb-6">
-              Making homeownership a reality for thousands of families with transparent, 
+
+            <p className="text-sm text-gray-500 leading-relaxed mb-6 max-w-md">
+              Making homeownership a reality for thousands of families with transparent,
               fast, and trusted lending solutions.
             </p>
             {/* Contact quick info */}
@@ -93,7 +93,7 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5
                         flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-gray-600">
-            © {year} HomeLoan Services. All rights reserved.
+            © {year} StarIndian FinServices. All rights reserved.
           </p>
           <div className="flex items-center gap-5 text-xs text-gray-600">
             <span className="hover:text-gray-400 cursor-pointer transition-colors">Terms</span>
