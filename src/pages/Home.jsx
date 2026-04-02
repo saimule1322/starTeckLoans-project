@@ -57,7 +57,7 @@ const slides = [
   },
 ];
 
- 
+
 
 // ── Feature card data ──────────────────────────────────────────────────────
 const FEATURES = [
@@ -127,7 +127,7 @@ const TESTIMONIALS = [
 ]
 
 export default function Home() {
-   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
 
   useEffect(() => {
@@ -159,93 +159,92 @@ export default function Home() {
       ══════════════════════════════════════════════════════ */}
       <section className="relative w-full h-screen overflow-hidden">
 
-  {/* Background glow (optional) */}
-  <div className="absolute right-10 w-72 h-72 bg-blue-200 rounded-full opacity-20 blur-3xl pointer-events-none z-0" />
-  <div className="absolute bottom-0 left-10 w-64 h-64 bg-blue-300 rounded-full opacity-15 blur-3xl pointer-events-none z-0" />
+        {/* Background glow (optional) */}
+        <div className="absolute right-10 w-72 h-72 bg-blue-200 rounded-full opacity-20 blur-3xl pointer-events-none z-0" />
+        <div className="absolute bottom-0 left-10 w-64 h-64 bg-blue-300 rounded-full opacity-15 blur-3xl pointer-events-none z-0" />
 
-  {/* FULLSCREEN CAROUSEL */}
-  <div
-    className="relative w-full h-screen flex items-center justify-center"
-    style={{
-      backgroundImage: `url(${slide.backgroundImage})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    }}
-    onMouseEnter={() => setIsAutoPlay(false)}
-    onMouseLeave={() => setIsAutoPlay(true)}
-  >
-    {/* Overlay */}
-    <div className="absolute inset-0 bg-white/85 backdrop-blur-sm" />
+        {/* FULLSCREEN CAROUSEL */}
+        <div
+          className="relative w-full h-screen flex items-center justify-center"
+          style={{
+            backgroundImage: `url(${slide.backgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+          onMouseEnter={() => setIsAutoPlay(false)}
+          onMouseLeave={() => setIsAutoPlay(true)}
+        >
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-white/85 backdrop-blur-sm" />
 
-    {/* Content */}
-    <div className="relative z-10 text-center max-w-3xl px-4 space-y-6">
-      
-      <p className="text-blue-600 font-medium text-sm">
-        {slide.trust}
-      </p>
+          {/* Content */}
+          <div className="relative z-10 text-center max-w-3xl px-4 space-y-6">
 
-      <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight">
-        {slide.heading.black}{' '}
-        <span className="text-blue-600">{slide.heading.blue}</span>{' '}
-        {slide.heading.black2}
-      </h1>
+            <p className="text-blue-600 font-medium text-sm">
+              {slide.trust}
+            </p>
 
-      <p className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto">
-        {slide.description}
-      </p>
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight">
+              {slide.heading.black}{' '}
+              <span className="text-blue-600">{slide.heading.blue}</span>{' '}
+              {slide.heading.black2}
+            </h1>
 
-      {/* Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-50 transition-all duration-200 shadow-xl hover:shadow-2xl hover:-translate-y-0.5" >
-          {slide.cta1}
-       </Link >
-        <Link to="/services" className="border border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg w-full sm:w-auto">
-          {slide.cta2}
-        </Link>
-      </div>
+            <p className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto">
+              {slide.description}
+            </p>
 
-      {/* Features */}
-      <div className="flex flex-wrap justify-center gap-4 pt-4">
-        {slide.features.map((f, i) => (
-          <div key={i} className="flex items-center gap-2">
-            <Check className="text-green-500 w-4 h-4" />
-            <span className="text-sm text-gray-700">{f}</span>
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-50 transition-all duration-200 shadow-xl hover:shadow-2xl hover:-translate-y-0.5" >
+                {slide.cta1}
+              </Link >
+              <Link to="/services" className="border border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg w-full sm:w-auto">
+                {slide.cta2}
+              </Link>
+            </div>
+
+            {/* Features */}
+            <div className="flex flex-wrap justify-center gap-4 pt-4">
+              {slide.features.map((f, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <Check className="text-green-500 w-4 h-4" />
+                  <span className="text-sm text-gray-700">{f}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
 
-    {/* Arrows */}
-    <button
-      onClick={prevSlide}
-      className="hidden sm:flex absolute left-4 md:left-8 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:scale-110 transition"
-    >
-      <ChevronLeft />
-    </button>
+          {/* Arrows */}
+          <button
+            onClick={prevSlide}
+            className="hidden sm:flex absolute left-4 md:left-8 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:scale-110 transition"
+          >
+            <ChevronLeft />
+          </button>
 
-    <button
-      onClick={nextSlide}
-      className="hidden sm:flex absolute right-4 md:right-8 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:scale-110 transition"
-    >
-      <ChevronRight />
-    </button>
+          <button
+            onClick={nextSlide}
+            className="hidden sm:flex absolute right-4 md:right-8 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:scale-110 transition"
+          >
+            <ChevronRight />
+          </button>
 
-    {/* Dots */}
-    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-      {slides.map((_, idx) => (
-        <button
-          key={idx}
-          onClick={() => goToSlide(idx)}
-          className={`${
-            idx === currentSlide
-              ? 'bg-blue-600 w-6 h-2'
-              : 'bg-gray-400 w-2 h-2'
-          } rounded-full`}
-        />
-      ))}
-    </div>
-  </div>
-</section>
+          {/* Dots */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+            {slides.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => goToSlide(idx)}
+                className={`${idx === currentSlide
+                  ? 'bg-blue-600 w-6 h-2'
+                  : 'bg-gray-400 w-2 h-2'
+                  } rounded-full`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ══════════════════════════════════════════════════════
           STATS BAND
@@ -271,10 +270,10 @@ export default function Home() {
 
           {/* Section heading */}
           <div className="text-center mb-14">
-            <p className="section-tag">Why HomeLoan?</p>
+            <p className="section-tag">Why StarIndian FinServices?</p>
             <h2 className="section-title mb-4">Everything You Need,<br />In One Place</h2>
             <p className="section-subtitle mx-auto text-center">
-              We've simplified the complex world of home financing into a transparent, 
+              We've simplified the complex world of Home Loans, Insurance, and Stock Markets into a transparent,
               stress-free experience.
             </p>
           </div>
@@ -292,6 +291,97 @@ export default function Home() {
                 <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+    SERVICES OVERVIEW
+══════════════════════════════════════════════════════ */}
+      <section className="py-10 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section heading */}
+          <div className="text-center mb-14">
+            <p className="section-tag">Our Services</p>
+            <h2 className="section-title mb-4">Quickly Explore What We Offer</h2>
+            <p className="section-subtitle mx-auto text-center max-w-2xl">
+              From loans to insurance to investments, we provide simple solutions to help you achieve your financial goals.
+            </p>
+          </div>
+
+          {/* Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Loans Card */}
+            <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between hover:shadow-2xl transition-shadow duration-300">
+              <h3 className="font-display text-xl font-bold text-gray-900 mb-3">💰 Loans</h3>
+              <p className="text-gray-500 text-sm mb-4">
+                Personal, home, and business loans with competitive rates and fast approvals. Get the right loan for your needs.
+              </p>
+              <ul className="text-gray-700 text-sm mb-6 list-disc list-inside space-y-1">
+                <li>Personal Loans</li>
+                <li>Home Loans</li>
+                <li>Business Loans</li>
+              </ul>
+              <Link
+                to="/services"
+                className="mt-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 
+             hover:from-blue-700 hover:to-blue-600 text-white font-semibold px-6 py-3 rounded-lg 
+             shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              >
+                Learn More
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-7-7l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+
+            {/* Insurance Card */}
+            <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between hover:shadow-2xl transition-shadow duration-300">
+              <h3 className="font-display text-xl font-bold text-gray-900 mb-3">🛡 Insurance</h3>
+              <p className="text-gray-500 text-sm mb-4">
+                Protect your family, health, and assets with our range of insurance plans. Simple, reliable, and fast.
+              </p>
+              <ul className="text-gray-700 text-sm mb-6 list-disc list-inside space-y-1">
+                <li>Life Insurance</li>
+                <li>Health Insurance</li>
+                <li>Vehicle Insurance</li>
+              </ul>
+              <Link
+                to="/services"
+                className="mt-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 
+             hover:from-blue-700 hover:to-blue-600 text-white font-semibold px-6 py-3 rounded-lg 
+             shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              >
+                Learn More
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-7-7l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+
+            {/* Stock Market / Investments Card */}
+            <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between hover:shadow-2xl transition-shadow duration-300">
+              <h3 className="font-display text-xl font-bold text-gray-900 mb-3">📈 Stock Markets</h3>
+              <p className="text-gray-500 text-sm mb-4">
+                Grow your wealth with expert guidance in portfolio management, mutual funds, and stock advisory services.
+              </p>
+              <ul className="text-gray-700 text-sm mb-6 list-disc list-inside space-y-1">
+                <li>Portfolio Management</li>
+                <li>Mutual Funds</li>
+                <li>Stock Advisory</li>
+              </ul>
+              <Link
+                to="/services"
+                className="mt-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 
+             hover:from-blue-700 hover:to-blue-600 text-white font-semibold px-6 py-3 rounded-lg 
+             shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              >
+                Learn More
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-7-7l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
