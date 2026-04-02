@@ -1,5 +1,6 @@
 // Contact.jsx — Contact info + functional form with validation
 import React, { useState } from 'react'
+import axios from 'axios'
 
 // ── Contact info config ───────────────────────────────────────────────────
 const CONTACT_INFO = [
@@ -80,25 +81,52 @@ export default function Contact() {
   }
 
   // ── Handle form submission ──
-  const handleSubmit = async (e) => {
-    e.preventDefault()  // prevent page reload
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()  // prevent page reload
 
-    const validationErrors = validate()
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors)
-      return
-    }
+  //   const validationErrors = validate()
+  //   if (Object.keys(validationErrors).length > 0) {
+  //     setErrors(validationErrors)
+  //     return
+  //   }
 
-    // Simulate API call with a short delay
-    setLoading(true)
-    await new Promise(resolve => setTimeout(resolve, 1200))
-    setLoading(false)
+  //   // Simulate API call with a short delay
+  //   setLoading(true)
+  //   await new Promise(resolve => setTimeout(resolve, 1200))
+  //   setLoading(false)
 
-    // Mark as successfully submitted & reset form
-    setSubmitted(true)
-    setForm(INITIAL_FORM)
-    setErrors({})
+  //   // Mark as successfully submitted & reset form
+  //   setSubmitted(true)
+  //   setForm(INITIAL_FORM)
+  //   setErrors({})
+  // }
+
+const handleSubmit = async (e) => {
+  e.preventDefault()
+
+  const validationErrors = validate()
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors)
+    return
   }
+
+  setLoading(true)
+
+  try {
+    const response = await axios.post('http://localhost:5000/api/contact', form)
+
+    if (response.data.success) {
+      setSubmitted(true)
+      setForm(INITIAL_FORM)
+      setErrors({})
+    }
+  } catch (error) {
+    console.error('Error submitting form:', error)
+    alert('Failed to submit. Try again.')
+  }
+
+  setLoading(false)
+}
 
   // ── Reset to show form again ──
   const handleReset = () => setSubmitted(false)

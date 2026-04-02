@@ -1,7 +1,7 @@
 // Navbar.jsx — Sticky, responsive navigation with active link highlighting
 import React, { useState, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import logo from '../assets/logo.jpeg';
+import logo from '../assets/logo2.png';
 
 // Navigation links config — easy to extend
 const NAV_LINKS = [

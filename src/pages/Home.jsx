@@ -2,6 +2,63 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+
+import { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, Check } from 'lucide-react';
+
+const slides = [
+  {
+    id: 'home-loan',
+    trust: 'Trusted by 50,000+ Homeowners Across India',
+    heading: {
+      black: 'Get Your',
+      blue: 'Dream Home Loan',
+      black2: 'Easily',
+    },
+    description:
+      'Fast approvals, unbeatable interest rates, and expert guidance every step of the way.',
+    cta1: 'Apply Now',
+    cta2: 'Explore Loans',
+    features: ['No hidden charges', 'Paperless process', 'RBI Registered'],
+    backgroundImage:
+      'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
+  },
+  {
+    id: 'insurance',
+    trust: 'Trusted by 100,000+ Policyholders Across India',
+    heading: {
+      black: 'Secure Your',
+      blue: 'Family Insurance',
+      black2: 'Today',
+    },
+    description:
+      'Comprehensive coverage, instant policy activation, and hassle-free claims.',
+    cta1: 'Get Insured Now',
+    cta2: 'Explore Plans',
+    features: ['Instant Approval', 'Hassle-Free Claims', 'RBI Certified'],
+    backgroundImage:
+      'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
+  },
+  {
+    id: 'stock-market',
+    trust: 'Trusted by 75,000+ Investors Across India',
+    heading: {
+      black: 'Start Your',
+      blue: 'Wealth Building',
+      black2: 'Journey',
+    },
+    description:
+      'Expert market analysis, personalized investment strategies, and 24/7 trading support.',
+    cta1: 'Start Investing',
+    cta2: 'View Opportunities',
+    features: ['SEBI Registered', 'Market Analysis', '24/7 Support'],
+    backgroundImage:
+      'https://images.unsplash.com/photo-1611974789855-9c2a23a94d6d?w=1200&q=80',
+  },
+];
+
+ 
+
 // ── Feature card data ──────────────────────────────────────────────────────
 const FEATURES = [
   {
@@ -70,68 +127,125 @@ const TESTIMONIALS = [
 ]
 
 export default function Home() {
+   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
+
+  useEffect(() => {
+    if (!isAutoPlay) return;
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlay]);
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+    setIsAutoPlay(false);
+    setTimeout(() => setIsAutoPlay(true), 8000);
+  };
+
+  const nextSlide = () => goToSlide((currentSlide + 1) % slides.length);
+  const prevSlide = () =>
+    goToSlide((currentSlide - 1 + slides.length) % slides.length);
+
+  const slide = slides[currentSlide];
   return (
-    <div className="pt-16"> {/* offset for fixed navbar */}
+    <div > {/* offset for fixed navbar */}
 
       {/* ══════════════════════════════════════════════════════
           HERO SECTION
       ══════════════════════════════════════════════════════ */}
-      <section className="hero-mesh relative overflow-hidden">
-        {/* Decorative circles */}
-        <div className="absolute top-20 right-10 w-72 h-72 bg-blue-200 rounded-full opacity-20 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-10 left-10 w-64 h-64 bg-blue-300 rounded-full opacity-15 blur-3xl pointer-events-none" />
+      <section className="relative w-full h-screen overflow-hidden">
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
+  {/* Background glow (optional) */}
+  <div className="absolute right-10 w-72 h-72 bg-blue-200 rounded-full opacity-20 blur-3xl pointer-events-none z-0" />
+  <div className="absolute bottom-0 left-10 w-64 h-64 bg-blue-300 rounded-full opacity-15 blur-3xl pointer-events-none z-0" />
 
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 
-                            border border-blue-200 text-blue-700 text-xs font-semibold mb-8">
-              <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
-              Trusted by 50,000+ Homeowners Across India
-            </div>
+  {/* FULLSCREEN CAROUSEL */}
+  <div
+    className="relative w-full h-screen flex items-center justify-center"
+    style={{
+      backgroundImage: `url(${slide.backgroundImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}
+    onMouseEnter={() => setIsAutoPlay(false)}
+    onMouseLeave={() => setIsAutoPlay(true)}
+  >
+    {/* Overlay */}
+    <div className="absolute inset-0 bg-white/85 backdrop-blur-sm" />
 
-            {/* Headline */}
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 
-                           leading-[1.12] mb-6">
-              Get Your{' '}
-              <span className="gradient-text">Dream Home Loan</span>
-              {' '}Easily
-            </h1>
+    {/* Content */}
+    <div className="relative z-10 text-center max-w-3xl px-4 space-y-6">
+      
+      <p className="text-blue-600 font-medium text-sm">
+        {slide.trust}
+      </p>
 
-            {/* Description */}
-            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed mb-10 max-w-2xl mx-auto">
-              Fast approvals, unbeatable interest rates, and expert guidance every step of the way. 
-              Your path to homeownership starts here.
-            </p>
+      <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight">
+        {slide.heading.black}{' '}
+        <span className="text-blue-600">{slide.heading.blue}</span>{' '}
+        {slide.heading.black2}
+      </h1>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="btn-primary text-base px-8 py-3.5">
-                Apply Now
-                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-              <Link to="/services" className="btn-outline text-base px-8 py-3.5">
-                Explore Loans
-              </Link>
-            </div>
+      <p className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto">
+        {slide.description}
+      </p>
 
-            {/* Trust signals */}
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-gray-500">
-              {['No hidden charges', 'Paperless process', 'RBI Registered'].map(point => (
-                <div key={point} className="flex items-center gap-1.5">
-                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  {point}
-                </div>
-              ))}
-            </div>
+      {/* Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-50 transition-all duration-200 shadow-xl hover:shadow-2xl hover:-translate-y-0.5" >
+          {slide.cta1}
+       </Link >
+        <Link to="/services" className="border border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg w-full sm:w-auto">
+          {slide.cta2}
+        </Link>
+      </div>
+
+      {/* Features */}
+      <div className="flex flex-wrap justify-center gap-4 pt-4">
+        {slide.features.map((f, i) => (
+          <div key={i} className="flex items-center gap-2">
+            <Check className="text-green-500 w-4 h-4" />
+            <span className="text-sm text-gray-700">{f}</span>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+
+    {/* Arrows */}
+    <button
+      onClick={prevSlide}
+      className="hidden sm:flex absolute left-4 md:left-8 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:scale-110 transition"
+    >
+      <ChevronLeft />
+    </button>
+
+    <button
+      onClick={nextSlide}
+      className="hidden sm:flex absolute right-4 md:right-8 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:scale-110 transition"
+    >
+      <ChevronRight />
+    </button>
+
+    {/* Dots */}
+    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+      {slides.map((_, idx) => (
+        <button
+          key={idx}
+          onClick={() => goToSlide(idx)}
+          className={`${
+            idx === currentSlide
+              ? 'bg-blue-600 w-6 h-2'
+              : 'bg-gray-400 w-2 h-2'
+          } rounded-full`}
+        />
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* ══════════════════════════════════════════════════════
           STATS BAND
