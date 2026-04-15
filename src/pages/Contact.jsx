@@ -26,7 +26,7 @@ const CONTACT_INFO = [
       </svg>
     ),
     label: 'Call Us',
-    value: '+91 98765 43210',
+    value: '+91 63044 49153',
     sub: 'Mon–Sat 9 AM to 7 PM',
     color: 'bg-green-100 text-green-600',
   },
@@ -38,7 +38,7 @@ const CONTACT_INFO = [
       </svg>
     ),
     label: 'Email Us',
-    value: 'support@homeloan.in',
+    value: 'startechecommerce786@gmail.com',
     sub: 'Response within 2 business hours',
     color: 'bg-purple-100 text-purple-600',
   },
@@ -74,9 +74,9 @@ export default function Contact() {
   // ── Validate required fields ──
   const validate = () => {
     const newErrors = {}
-    if (!form.name.trim())      newErrors.name     = 'Full name is required'
-    if (!form.location.trim())  newErrors.location  = 'Location is required'
-    if (!form.loanType)         newErrors.loanType  = 'Please select a loan type'
+    if (!form.name.trim()) newErrors.name = 'Full name is required'
+    if (!form.location.trim()) newErrors.location = 'Location is required'
+    if (!form.loanType) newErrors.loanType = 'Please select a loan type'
     return newErrors
   }
 
@@ -101,32 +101,32 @@ export default function Contact() {
   //   setErrors({})
   // }
 
-const handleSubmit = async (e) => {
-  e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault()
 
-  const validationErrors = validate()
-  if (Object.keys(validationErrors).length > 0) {
-    setErrors(validationErrors)
-    return
-  }
-
-  setLoading(true)
-
-  try {
-    const response = await axios.post('http://localhost:5000/api/contact', form)
-
-    if (response.data.success) {
-      setSubmitted(true)
-      setForm(INITIAL_FORM)
-      setErrors({})
+    const validationErrors = validate()
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors)
+      return
     }
-  } catch (error) {
-    console.error('Error submitting form:', error)
-    alert('Failed to submit. Try again.')
-  }
 
-  setLoading(false)
-}
+    setLoading(true)
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/contact', form)
+
+      if (response.data.success) {
+        setSubmitted(true)
+        setForm(INITIAL_FORM)
+        setErrors({})
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      alert('Failed to submit. Try again.')
+    }
+
+    setLoading(false)
+  }
 
   // ── Reset to show form again ──
   const handleReset = () => setSubmitted(false)
@@ -144,7 +144,7 @@ const handleSubmit = async (e) => {
             We're Here to <span className="gradient-text">Help You</span>
           </h1>
           <p className="section-subtitle mx-auto">
-            Have a question or ready to apply? Reach out to our team of expert loan advisors 
+            Have a question or ready to apply? Reach out to our team of expert loan advisors
             today and get personalised guidance.
           </p>
         </div>
@@ -186,15 +186,15 @@ const handleSubmit = async (e) => {
               <p className="section-tag">Get in Touch</p>
               <h2 className="section-title mb-5">Apply or Ask — We'll<br />Respond Promptly</h2>
               <p className="text-gray-500 leading-relaxed mb-8">
-                Fill in the quick form and one of our advisors will connect with you 
+                Fill in the quick form and one of our advisors will connect with you
                 within 2 business hours. No spam, no hassle.
               </p>
 
               {/* Quick contact methods */}
               <div className="space-y-4">
                 {[
-                  { label: 'WhatsApp', val: '+91 98765 43210', icon: '💬' },
-                  { label: 'Email', val: 'support@homeloan.in', icon: '✉️' },
+                  { label: 'WhatsApp', val: '+91 63044 49153', icon: '💬' },
+                  { label: 'Email', val: 'startechecommerce786@gmail.com', icon: '✉️' },
                   { label: 'Hours', val: 'Mon–Sat, 9 AM – 7 PM', icon: '🕘' },
                 ].map(({ label, val, icon }) => (
                   <div key={label} className="flex items-center gap-3 text-sm">
@@ -226,7 +226,7 @@ const handleSubmit = async (e) => {
                       Application Received!
                     </h3>
                     <p className="text-gray-500 mb-6 max-w-sm mx-auto text-sm leading-relaxed">
-                      Thank you for reaching out. Our loan advisor will contact you within 
+                      Thank you for reaching out. Our loan advisor will contact you within
                       2 business hours to discuss your requirements.
                     </p>
                     <button onClick={handleReset} className="btn-outline">
